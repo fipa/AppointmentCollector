@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-	resources :clients
+	resources :patients
+	resources :tenants
 	match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
 	
 
