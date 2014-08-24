@@ -14,8 +14,8 @@
 <body>
 
 <div class="container-fluid"><div clas="row"><%= yield %></div></div>
-
-
+<%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+<p id="notice" class="col-sm-12 bg-warning"><%= notice %></p>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

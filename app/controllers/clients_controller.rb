@@ -61,6 +61,15 @@ class ClientsController < ApplicationController
     end
   end
 
+	def logged
+		auth = request.env["omniauth.auth"]
+ 		respond_to do |format|
+			format.html { redirect_to clients_url, notice: auth }
+			format.json { head :no_content }
+		end
+	end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_client
@@ -71,4 +80,7 @@ class ClientsController < ApplicationController
     def client_params
       params.require(:client).permit(:full_name, :email, :ammount, :comments)
     end
+
+
+
 end
