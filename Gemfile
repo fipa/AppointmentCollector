@@ -39,3 +39,5 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'omniauth-google-oauth2'
+
+gem 'google-api-client', :require => 'google/api_client'

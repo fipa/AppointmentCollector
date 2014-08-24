@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 	resources :clients
-	match "/auth/:provider/callback" => "clients#logged", via: [:get, :post]
+	match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
 	
 
   # The priority is based upon order of creation: first created -> highest priority.
