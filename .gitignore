@@ -14,3 +14,6 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore google client keys
+/config/initializers/dev_google_client_configuration.rb
