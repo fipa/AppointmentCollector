@@ -15,10 +15,20 @@
 
 <div class="container-fluid">
 
-<div class="row"><%= link_to "Sign in with Google", "/auth/google_oauth2" %></div>
-<div clas="row"><%= yield %></div>
 <div class="row">
+    <% if current_user %>
+        Bienvenid@ <%= current_user.name %>
+        <%= link_to "Salir", signout_path %>
+    <% else %>
+        <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+    <% end %>
+</div>
+
 <div clas="row"><p id="notice" class="col-sm-12 bg-warning"><%= notice %></p></div>
+
+<div clas="row"><%= yield %></div>
+
+
 
 </div>
 
