@@ -1,5 +1,5 @@
 class CalendarDate
 
-    attr_accessor :date, :begining, :ending, :description
+    attr_accessor :summary, :begining, :ending
 
 end

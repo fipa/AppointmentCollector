@@ -6,12 +6,28 @@ class DatesController < ApplicationController
   def index
     client_id = params[:tenant_id]
     client_id = params[:patient_id] if client_id.nil?
-	if (session[:user_id].nil? )
-		
-	else
-		@dates = User.find(session[:user_id]).clients.find(client_id).dates
-		@result = @dates
+
+
+    unless (session[:user_id].nil?)
+    #TODO que hacer cuando user_id es nil?
+        @client = User.find(session[:user_id]).clients.find(client_id)
+        @dates = Array.new
+
+        if params[:start_date].nil?
+            @preset_start_date = Date.today
+            @preset_end_date = Date.today
+        else
+            @preset_start_date = Date.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i)
+            @preset_end_date = Date.civil(params[:end_date][:year].to_i, params[:end_date][:month].to_i, params[:end_date][:day].to_i)
+            date_from = params[:start_date][:year] + "-" + params[:start_date][:month] + "-" + params[:start_date][:day]
+            date_to = params[:end_date][:year] + "-" + params[:end_date][:month] + "-" + params[:end_date][:day]
+            @dates = @client.dates(date_from, date_to)
+        end
+
+        
 	end
+    
+
   end
 
   # GET /dates/1

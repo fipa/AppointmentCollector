@@ -1,1 +1,55 @@
-<%= debug @result.data %>
+<div class='row col-sm-12'>
+    <h1><%= @client.full_name%></h1>
+</div>
+
+<div class='row col-sm-12'>
+
+
+    <%= form_tag("/tenants/"  + @client.id.to_s + "/dates/", method: "get", role: "form", class:"form-inline") do %>
+        <div class="form-group">
+            <%= label_tag(:q, "Buscar desde") %>
+            <%= select_date @preset_start_date, prefix: :start_date %>
+        </div>
+        <div class="form-group">
+            <%= label_tag(:q, "Buscar hasta") %>
+            <%= select_date @preset_end_date, prefix: :end_date %>
+        </div>
+        <%= submit_tag(">") %>
+    <% end %>
+
+
+    <form role="form">
+      <div class="form-inline">
+        <label for="find_from">Buscar desde</label>
+        <input type="date" class="form-control" id="find_from">
+        <label for="find_to">Buscar desde</label>
+        <input type="date" class="form-control" id="find_to">
+      </div>
+    </form>
+</div>
+
+<div class='row col-sm-12'>
+
+    <table class="table table-hover table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Fecha</th>
+          <th>Horario</th>
+          <th>Duraci&oacute;n</th>
+        </tr>
+      </thead>
+    
+      <tbody>
+        <% @dates.each do |date| %>
+          <tr>
+            <td><%= date.begining.strftime("%e %b %Y")  %></td>
+            <td><%= date.begining.strftime("%H:%M") %> - <%= date.ending.strftime("%H:%M") %></td>
+            <td><%= ((date.ending - date.begining)/3600).round %></td>  
+                <% #TODO refactorizar a un helper el campo duracion
+                %>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    
+</div>
