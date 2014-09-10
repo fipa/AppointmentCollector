@@ -7,6 +7,11 @@ class Client < ActiveRecord::Base
 		return date_entries
 
 	end
+	
+	#TODO este metodo debe eliminarse, el calendar id se debe obtener desde un parametro del usuario
+	def self.calendar_id
+	    '3239macob37v5pp1224fom5a28@group.calendar.google.com'
+	end
 
 
 	private
@@ -17,13 +22,15 @@ class Client < ActiveRecord::Base
 	    calendar_service = google_client.discovered_api('calendar', 'v3')
 	
     	parameters = Hash.new
-    	parameters[:calendarId] = self.class.calendar_id
+    	parameters[:calendarId] = Client.calendar_id
     	parameters[:timeMin] = date_min + "T00:00:00-03:00"
     	parameters[:timeMax] = date_max + "T00:00:00-03:00"
     	parameters[:maxResults] = max_results
         parameters[:fields] = 'items(created,description,end,endTimeUnspecified,id,start,summary)'
     	parameters[:singleEvents] = true 
     	parameters[:q] = self.full_name
+    	
+    	logger.info "FIPA Request a google calendar " + parameters.to_s
     	
     	results = google_client.execute(
             :api_method => google_client.discovered_api('calendar', 'v3').events.list,

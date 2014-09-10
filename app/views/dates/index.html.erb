@@ -5,7 +5,7 @@
 <div class='row col-sm-12'>
 
 
-    <%= form_tag("/cliens/"  + @client.id.to_s + "/dates/", method: "get", role: "form", class:"form-inline") do %>
+    <%= form_tag("/clients/"  + @client.id.to_s + "/dates/", method: "get", role: "form", class:"form-inline") do %>
         <div class="form-group">
             <%= label_tag(:q, "Buscar desde") %>
             <%= select_date @preset_start_date, prefix: :start_date %>
