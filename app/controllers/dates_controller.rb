@@ -4,9 +4,7 @@ class DatesController < ApplicationController
   # GET /dates
   # GET /dates.json
   def index
-    client_id = params[:tenant_id]
-    client_id = params[:patient_id] if client_id.nil?
-
+    client_id = params[:client_id]
 
     unless (session[:user_id].nil?)
     #TODO que hacer cuando user_id es nil?

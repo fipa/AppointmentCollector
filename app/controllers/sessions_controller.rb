@@ -6,14 +6,14 @@ class SessionsController < ApplicationController
     user = User.find_by_uid(auth["uid"])
 
 	if user.nil?
-		redirect_to patients_path, :notice => "No tiene permiso para acceder a esta aplicacion"
+		redirect_to clients_path, :notice => "No tiene permiso para acceder a esta aplicacion"
 	else
 		session[:user_id] = user.id
 		user.token = Token.new(:token_string => auth["credentials"]["token"])
 		user.save
 		#google_session = GoogleSession.instance
 		#google_session.build_session_from_token(auth["credentials"]["token"])
-	    	redirect_to patients_path, :notice => "Bienvenid@ " + user.name
+	    	redirect_to clients_path, :notice => "Bienvenid@ " + user.name
 	end
         
 	#@auth = request.env["omniauth.auth"]
@@ -52,7 +52,7 @@ class SessionsController < ApplicationController
 
     def destroy
         session[:user_id] = nil
-        redirect_to patients_path, :notice => "Adios!"
+        redirect_to clients_path, :notice => "Adios!"
     end
 
 end

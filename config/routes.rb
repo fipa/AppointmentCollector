@@ -1,15 +1,10 @@
 Rails.application.routes.draw do
     
-	resources :patients
-	resources :tenants
+	resources :clients
 	match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
 	match "/signout" => "sessions#destroy", via: [:get, :post], :as  => :signout
 
-    resources :tenants do
-        resources :dates
-    end
-
-    resources :patients do
+    resources :clients do
         resources :dates
     end
 
