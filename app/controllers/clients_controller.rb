@@ -4,7 +4,7 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+        	@clients = Calendar.find(params[:calendar_id]).clients
   end
 
   # GET /clients/1

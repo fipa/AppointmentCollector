@@ -4,11 +4,8 @@ class DatesController < ApplicationController
   # GET /dates
   # GET /dates.json
   def index
-    client_id = params[:client_id]
 
-    unless (session[:user_id].nil?)
-    #TODO que hacer cuando user_id es nil?
-        @client = User.find(session[:user_id]).clients.find(client_id)
+        @client = Client.find(params[:client_id])
         @dates = Array.new
 
         if params[:start_date].nil?
@@ -21,10 +18,6 @@ class DatesController < ApplicationController
             date_to = params[:end_date][:year] + "-" + params[:end_date][:month] + "-" + params[:end_date][:day]
             @dates = @client.dates(date_from, date_to)
         end
-
-        
-	end
-    
 
   end
 

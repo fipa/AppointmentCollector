@@ -1,0 +1,32 @@
+<h1>Listing calendars</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Calendar key</th>
+      <th>User</th>
+      <th>Comments</th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @calendars.each do |calendar| %>
+      <tr>
+        <td><%= calendar.name %></td>
+        <td><%= calendar.calendar_key %></td>
+        <td><%= calendar.user_id %></td>
+        <td><%= calendar.comments %></td>
+        <td><%= link_to 'Ver clientes', calendar_clients_path(calendar) %></td>
+        <td><%= link_to 'Show', calendar %></td>
+        <td><%= link_to 'Edit', edit_calendar_path(calendar) %></td>
+        <td><%= link_to 'Destroy', calendar, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Calendar', new_calendar_path %>

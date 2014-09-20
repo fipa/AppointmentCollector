@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140910000843) do
+ActiveRecord::Schema.define(version: 20140920161039) do
+
+  create_table "calendars", force: true do |t|
+    t.string   "name"
+    t.string   "calendar_key"
+    t.integer  "user_id"
+    t.text     "comments"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "clients", force: true do |t|
     t.string   "full_name"
@@ -20,7 +29,7 @@ ActiveRecord::Schema.define(version: 20140910000843) do
     t.text     "comments"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
+    t.integer  "calendar_id"
   end
 
   create_table "tokens", force: true do |t|

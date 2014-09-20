@@ -1,6 +1,7 @@
 class Client < ActiveRecord::Base
     
-    belongs_to :user
+    belongs_to :calendar
+	delegate :user, to: :calendar
 
 	def dates(date_min = nil, date_max = nil, max_results = 15)
 		date_entries = get_dates_from_calendar(date_min, date_max, max_results)
@@ -8,11 +9,6 @@ class Client < ActiveRecord::Base
 
 	end
 	
-	#TODO este metodo debe eliminarse, el calendar id se debe obtener desde un parametro del usuario
-	def self.calendar_id
-	    '3239macob37v5pp1224fom5a28@group.calendar.google.com'
-	end
-
 
 	private
 
@@ -22,7 +18,7 @@ class Client < ActiveRecord::Base
 	    calendar_service = google_client.discovered_api('calendar', 'v3')
 	
     	parameters = Hash.new
-    	parameters[:calendarId] = Client.calendar_id
+    	parameters[:calendarId] = self.calendar_id
     	parameters[:timeMin] = date_min + "T00:00:00-03:00"
     	parameters[:timeMax] = date_max + "T00:00:00-03:00"
     	parameters[:maxResults] = max_results
