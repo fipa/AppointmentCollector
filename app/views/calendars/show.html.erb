@@ -1,24 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
+<p class="col-sm-12">
   <strong>Name:</strong>
   <%= @calendar.name %>
 </p>
 
-<p>
+<p class="col-sm-12">
   <strong>Calendar key:</strong>
   <%= @calendar.calendar_key %>
 </p>
 
-<p>
+<p class="col-sm-12">
   <strong>User:</strong>
   <%= @calendar.user_id %>
 </p>
 
-<p>
+<p class="col-sm-12">
   <strong>Comments:</strong>
   <%= @calendar.comments %>
 </p>
 
-<%= link_to 'Edit', edit_calendar_path(@calendar) %> |
-<%= link_to 'Back', calendars_path %>
+<%= link_to 'Edit', edit_calendar_path(@calendar), class:"btn col-sm-6 col-xs-12" %> |
+<%= link_to 'Back', calendars_path, class:"btn col-sm-6 col-xs-12" %>
