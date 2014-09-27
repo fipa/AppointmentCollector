@@ -18,7 +18,7 @@ class Client < ActiveRecord::Base
 	    calendar_service = google_client.discovered_api('calendar', 'v3')
 	
     	parameters = Hash.new
-    	parameters[:calendarId] = self.calendar_id
+    	parameters[:calendarId] = self.calendar.calendar_key
     	parameters[:timeMin] = date_min + "T00:00:00-03:00"
     	parameters[:timeMax] = date_max + "T00:00:00-03:00"
     	parameters[:maxResults] = max_results

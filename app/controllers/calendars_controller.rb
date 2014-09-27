@@ -1,5 +1,6 @@
 class CalendarsController < ApplicationController
   before_action :set_calendar, only: [:show, :edit, :update, :destroy]
+	#TODO no deberia poder accederse a este controlador si no se esta loggeado
 
   # GET /calendars
   # GET /calendars.json

@@ -1,10 +1,12 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
+	#TODO no deberia poder accederse a este controlador si no se esta loggeado
 
   # GET /clients
   # GET /clients.json
   def index
-        	@clients = Calendar.find(params[:calendar_id]).clients
+	@clients = Array.new
+	@clients = Calendar.find(params[:calendar_id]).clients unless params[:calendar_id].nil?
   end
 
   # GET /clients/1
