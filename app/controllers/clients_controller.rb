@@ -1,6 +1,5 @@
 class ClientsController < ApplicationController
   before_action :set_client, only: [:show, :edit, :update, :destroy]
-	#TODO no deberia poder accederse a este controlador si no se esta loggeado
 
   # GET /clients
   # GET /clients.json

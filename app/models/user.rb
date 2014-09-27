@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
     
-    has_many :clients
+    has_many :calendars
 
     def current_token
         self.tokens.last.token_string

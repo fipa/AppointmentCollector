@@ -1,0 +1,15 @@
+
+<% @calendars.each do |calendar| %>
+
+<div class="row col-lg-6 col-xs-12">
+	<%= calendar.name %>
+	<ul>
+	<% calendar.clients.each do |client| %>
+		<%= render "calendars/client", :client => client %>
+	<% end %>
+	</ul>
+
+<%= link_to 'Nuevo cliente', new_calendar_client_path(calendar) %>
+</div>
+
+<% end %>
