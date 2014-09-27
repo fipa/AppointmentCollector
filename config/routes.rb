@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
 	match "/auth/:provider/callback" => "sessions#create", via: [:get, :post]
 	match "/signout" => "sessions#destroy", via: [:get, :post], :as  => :signout
+	match "/login" => "sessions#login", via: [:get, :post], :as => :login
 
     resources :clients do
         resources :dates
