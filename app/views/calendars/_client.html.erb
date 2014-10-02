@@ -1,6 +1,5 @@
-
-<li>
-	<%= link_to client.full_name, edit_client_path(client) %>
-	<%= link_to 'Eventos', client_dates_path(client) %>
-</li>
-
+<div class="row">
+    
+    <div class="col-lg-6"><%= link_to client.full_name, edit_client_path(client) %></div>
+    <div class="col-lg-6"><%= link_to 'Eventos', client_dates_path(client) %></div>
+</div>

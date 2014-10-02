@@ -5,6 +5,11 @@
       <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     
+    <%= stylesheet_link_tag "scaffolds" %>
+    
+    
+    
+    
     <!-- Optional theme -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
 
@@ -15,16 +20,29 @@
 
 <div class="container-fluid">
 
+
+<% if current_user %>
 <div class="row">
-    <% if current_user %>
+    <div class="col-lg-6 col-lg-offset-3">
         Bienvenid@ <%= current_user.name %>
         <%= link_to "Salir", signout_path %>
-    <% end %>
+    </div>
+</div>
+<% end %>
+
+<div clas="row">
+    <div class="col-lg-6 col-lg-offset-3">
+        <p id="notice" class="col-sm-12 bg-warning"><%= notice %></p>
+    </div>
 </div>
 
-<div clas="row"><p id="notice" class="col-sm-12 bg-warning"><%= notice %></p></div>
-
-<div clas="row"><%= yield %></div>
+<div clas="row">
+    <div class="col-lg-6 col-lg-offset-3">
+    
+        <%= yield %>
+    
+    </div>
+</div>
 
 
 
