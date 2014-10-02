@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
 		session[:user_id] = user.id
 		user.token = Token.new(:token_string => auth["credentials"]["token"])
 		user.save
-	    	redirect_to calendars_path
+		redirect_to root_path
 	end
         
         

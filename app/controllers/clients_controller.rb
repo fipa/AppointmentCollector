@@ -5,7 +5,8 @@ class ClientsController < ApplicationController
   # GET /clients.json
   def index
 	@clients = Array.new
-	@clients = Calendar.find(params[:calendar_id]).clients unless params[:calendar_id].nil?
+	#@clients = Calendar.find(params[:calendar_id]).clients unless params[:calendar_id].nil?
+	@clients = current_user.calendars.find_by_id(params[:calendar_id]).clients
   end
 
   # GET /clients/1
@@ -16,6 +17,7 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
+    @calendar = current_user.calendars.find_by_id(params[:calendar_id])
   end
 
   # GET /clients/1/edit
@@ -26,10 +28,9 @@ class ClientsController < ApplicationController
   # POST /clients.json
   def create
     @client = Client.new(client_params)
-
     respond_to do |format|
       if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
+        format.html { redirect_to root_path, notice: 'Client was successfully created.' }
         format.json { render :show, status: :created, location: @client }
       else
         format.html { render :new }
