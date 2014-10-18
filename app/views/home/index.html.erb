@@ -1,8 +1,9 @@
-
+<div class="container" style="width:100%;">
+<div class="row">
 <% @calendars.each do |calendar| %>
 
 
-<div class="row col-lg-6 col-xs-12">
+<div class="col-lg-6">
     <h1><%= calendar.name %></h1>
     <p><%= link_to 'Nuevo cliente', new_calendar_client_path(calendar) %></p>
 	<table class="table table-striped">
@@ -15,5 +16,7 @@
 
 
 </div>
-
 <% end %>
+
+</div>
+</div>
