@@ -15,7 +15,7 @@ class Client < ActiveRecord::Base
     def get_dates_from_calendar(date_min, date_max, max_results)
         google_client = Google::APIClient.new
         google_client.authorization.access_token = self.user.current_token
-	    calendar_service = google_client.discovered_api('calendar', 'v3')
+	calendar_service = google_client.discovered_api('calendar', 'v3')
 	
     	parameters = Hash.new
     	parameters[:calendarId] = self.calendar.calendar_key
@@ -26,14 +26,13 @@ class Client < ActiveRecord::Base
     	parameters[:singleEvents] = true 
     	parameters[:q] = self.full_name
     	
-    	logger.info "FIPA Request a google calendar " + parameters.to_s
-    	
+	logger.info parameters.to_s
+
     	results = google_client.execute(
             :api_method => google_client.discovered_api('calendar', 'v3').events.list,
             :parameters => parameters,
             :headers => {'Content-Type' => 'application/json'}
     	)
-    
         #TODO manejar respuesta de ivnalid credentials
     	parsed_results = Array.new
     	results.data.items.each do |item|

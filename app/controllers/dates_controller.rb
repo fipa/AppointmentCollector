@@ -7,7 +7,6 @@ class DatesController < ApplicationController
 
         @client = Client.find(params[:client_id])
         @dates = Array.new
-
         if params[:start_date].nil?
             @preset_start_date = Date.today
             @preset_end_date = Date.today
