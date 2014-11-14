@@ -6,17 +6,15 @@ class DatesController < ApplicationController
   def index
 
 	@client = Client.find(params[:client_id])
-	@dates = Array.new
 	if params[:start_date].nil?
 		@preset_start_date = Date.today
-		@preset_end_date = Date.today
 	else
 		@preset_start_date = Date.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i)
-		@preset_end_date = Date.civil(params[:end_date][:year].to_i, params[:end_date][:month].to_i, params[:end_date][:day].to_i)
-		date_from = params[:start_date][:year] + "-" + params[:start_date][:month] + "-" + params[:start_date][:day]
-		date_to = params[:end_date][:year] + "-" + params[:end_date][:month] + "-" + params[:end_date][:day]
-		@dates = @client.dates(date_from, date_to)
-		@total_ammount = 1 
+		date_from = Date.new(params[:start_date][:year].to_i, params[:start_date][:month].to_i, 1)
+		date_to = Date.new(params[:start_date][:year].to_i, params[:start_date][:month].to_i, -1) # -1 is for getting the last day of month
+		dates = @client.dates(date_from.strftime("%Y-%m:%d"), date_to.strftime("%Y-%m:%d"))
+		@dates = dates[:entries]
+		@total_ammount = dates[:total_ammount]
 	end
 
   end

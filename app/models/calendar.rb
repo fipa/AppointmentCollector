@@ -9,6 +9,8 @@ class Calendar < ActiveRecord::Base
 		google_client.authorization.access_token = self.user.current_token
 		calendar_service = google_client.discovered_api('calendar', 'v3')
 
+		
+
 		parameters = Hash.new
 		parameters[:calendarId] = self.calendar_key
 		parameters[:timeMin] = date_min + "T00:00:00-03:00"
@@ -17,7 +19,7 @@ class Calendar < ActiveRecord::Base
 		parameters[:singleEvents] = true
 		parameters[:q] = client.full_name
 
-		logger.info parameters.to_s
+		logger.info("parametros para enviar a la API " +  parameters.to_s)
 
 		results = google_client.execute(
 			:api_method => google_client.discovered_api('calendar', 'v3').events.list,
@@ -35,7 +37,7 @@ class Calendar < ActiveRecord::Base
 		parsed_results << date
 
 		end
-
+		logger.info("resultrados de la API " + parsed_results.to_s)
 		return parsed_results
 
 	end

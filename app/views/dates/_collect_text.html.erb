@@ -1,0 +1,11 @@
+Hola <%= @client.full_name %>, env&iacute;o el detalle de uso de la consulta para el mes de <%= @dates.first.begining.strftime("%b de %Y") %>.
+
+<ul>
+<% @dates.each do |date| %>
+	<li><%= date.begining.strftime("%e %b %Y %H:%M")  %></li>
+<% end %>
+</ul>
+
+Total: <%= @total_ammount %>
+
+Muchas gracias.
