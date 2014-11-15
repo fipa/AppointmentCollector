@@ -4,7 +4,6 @@
 
 <div class='row col-sm-12'>
 
-
     <%= form_tag("/clients/"  + @client.id.to_s + "/dates/", method: "get", role: "form", class:"form-inline") do %>
         <div class="form-group">
             <%= label_tag(:q, "Buscar para el mes de") %>
@@ -13,34 +12,25 @@
         <%= submit_tag(">") %>
     <% end %>
 
-
-    <form role="form">
-      <div class="form-inline">
-        <label for="find_from">Buscar desde</label>
-        <input type="date" class="form-control" id="find_from">
-        <label for="find_to">Buscar desde</label>
-        <input type="date" class="form-control" id="find_to">
-      </div>
-    </form>
 </div>
 
 <% if !@dates.nil? && @dates.empty? %>
-	<div class='row col-sm-12'>
+	<div class='row col-sm-12 highlight'>
 	<p class="lead">No hay citas a cobrar</p>
 	</div>
 <% end %>
 
 
 <% if !@dates.nil? && !@dates.empty? %>
-	<div class='row col-sm-12'>
-	<hr/>
-	<p class="lead">Total a cobrar: <%= @total_ammount %></p>
-	<%= render 'collect_text', :locals => {:client => @client, :dates => @dates, :total_ammount => @total_ammount} %>
+	<div class='row col-sm-12 highlight'>
+		<h2>Para cobrar</h2>
+		<hr/>
+		<%= render 'collect_text', :locals => {:client => @client, :dates => @dates, :total_ammount => @total_ammount} %>
 	</div>
 
 
-<div class='row col-sm-12'>
-
+<div class='row col-sm-12 highlight'>
+	<h2>Detalle</h2>	
     <table class="table table-hover table-bordered table-striped">
       <thead>
         <tr>

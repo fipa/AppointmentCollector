@@ -1,4 +1,4 @@
-Hola <%= @client.full_name %>, env&iacute;o el detalle de uso de la consulta para el mes de <%= @dates.first.begining.strftime("%b de %Y") %>.
+<p>Hola <%= @client.full_name %>, env&iacute;o el detalle de uso de la consulta para el mes de <%= @dates.first.begining.strftime("%b/%Y") %>.</p>
 
 <ul>
 <% @dates.each do |date| %>
@@ -6,6 +6,8 @@ Hola <%= @client.full_name %>, env&iacute;o el detalle de uso de la consulta par
 <% end %>
 </ul>
 
-Total: <%= @total_ammount %>
+<p>Total: $<%= number_to_currency(@total_ammount, precision: 0, delimiter: '.', unit: '') %></p>
 
-Muchas gracias.
+<p>Muchas gracias.</p>
+
+
