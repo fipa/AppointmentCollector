@@ -17,7 +17,7 @@ class ClientsController < ApplicationController
   # GET /clients/new
   def new
     @client = Client.new
-    @calendar = current_user.calendars.find_by_id(params[:calendar_id])
+    @client.calendar = current_user.calendars.find_by_id(params[:calendar_id])
   end
 
   # GET /clients/1/edit
@@ -29,7 +29,7 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_params)
     respond_to do |format|
-      if @client.save
+    if @client.save
         format.html { redirect_to root_path, notice: 'Client was successfully created.' }
         format.json { render :show, status: :created, location: @client }
       else
@@ -37,6 +37,7 @@ class ClientsController < ApplicationController
         format.json { render json: @client.errors, status: :unprocessable_entity }
       end
     end
+	logger.info("los parametros recibidos son " + client_params.to_s)
   end
 
   # PATCH/PUT /clients/1
@@ -71,7 +72,7 @@ class ClientsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def client_params
-      params.require(:client).permit(:full_name, :email, :ammount, :comments)
+      params.require(:client).permit(:full_name, :email, :ammount, :comments, :calendar_id)
     end
 
 

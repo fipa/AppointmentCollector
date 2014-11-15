@@ -35,6 +35,9 @@
         <%= f.text_area :comments, class: "form-control" %>
     </div>
   </div>
+
+	<%= f.hidden_field :calendar_id %>
+
   <div class="form-group">
     <div class= "col-sm-4">&nbsp;</div>
     <%= f.submit "Guardar", class: "btn col-sm-4" %>
