@@ -18,6 +18,7 @@ class Calendar < ActiveRecord::Base
 		parameters[:fields] = 'items(created,description,end,endTimeUnspecified,id,start,summary)'
 		parameters[:singleEvents] = true
 		parameters[:q] = client.full_name
+		parameters[:orderBy] = "startTime"
 
 		logger.info("parametros para enviar a la API " +  parameters.to_s)
 
