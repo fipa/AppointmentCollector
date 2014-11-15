@@ -1,3 +1,4 @@
+<div id="text_for_collection" onclick="selectText()" class="">
 <p>Hola <%= @client.full_name %>, env&iacute;o el detalle de uso de la consulta para el mes de <%= @dates.first.begining.strftime("%b/%Y") %>.</p>
 
 <ul>
@@ -9,5 +10,32 @@
 <p>Total: $<%= number_to_currency(@total_ammount, precision: 0, delimiter: '.', unit: '') %></p>
 
 <p>Muchas gracias.</p>
+</div>
 
+<button type="button" class="btn btn-primary btn-xs" onclick="fnSelect('text_for_collection')">Seleccionar texto</button>
+<script type='text/javascript'>
+	$(document).ready(function() {
+		fnSelect("text_for_collection");
+	});
 
+	function fnSelect(objId) {
+		fnDeSelect();
+		if (document.selection) {
+		var range = document.body.createTextRange();
+ 	        range.moveToElementText(document.getElementById(objId));
+		range.select();
+		}
+		else if (window.getSelection) {
+		var range = document.createRange();
+		range.selectNode(document.getElementById(objId));
+		window.getSelection().addRange(range);
+		}
+	}
+
+	function fnDeSelect() {
+		if (document.selection) document.selection.empty();
+		else if (window.getSelection)
+                window.getSelection().removeAllRanges();
+	}
+
+</script>

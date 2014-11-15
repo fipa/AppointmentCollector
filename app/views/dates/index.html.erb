@@ -1,15 +1,12 @@
-<div class='row col-sm-12'>
+<div class='row col-sm-12 highlight'>
     <h1><%= @client.full_name%></h1>
-</div>
-
-<div class='row col-sm-12'>
 
     <%= form_tag("/clients/"  + @client.id.to_s + "/dates/", method: "get", role: "form", class:"form-inline") do %>
         <div class="form-group">
             <%= label_tag(:q, "Buscar para el mes de") %>
             <%= select_date @preset_start_date, prefix: :start_date, :discard_day => true %>
         </div>
-        <%= submit_tag(">") %>
+        <%= submit_tag(">", class:"btn btn-primary btn-xs") %>
     <% end %>
 
 </div>
@@ -24,7 +21,7 @@
 <% if !@dates.nil? && !@dates.empty? %>
 	<div class='row col-sm-12 highlight'>
 		<h2>Para cobrar</h2>
-		<hr/>
+		<small><em><mark>Ctrl-C para copiar</mark></em></small>
 		<%= render 'collect_text', :locals => {:client => @client, :dates => @dates, :total_ammount => @total_ammount} %>
 	</div>
 
