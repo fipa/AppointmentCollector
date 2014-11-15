@@ -41,3 +41,5 @@ gem 'spring',        group: :development
 gem 'omniauth-google-oauth2'
 
 gem 'google-api-client', :require => 'google/api_client'
+
+gem 'rails-i18n', '~> 4.0.0'
