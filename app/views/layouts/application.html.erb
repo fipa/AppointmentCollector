@@ -19,7 +19,7 @@
 
 <% if current_user %>
 <div class="row">
-    <div class="col-lg-6 col-lg-offset-3">
+    <div class="col-lg-6 col-lg-offset-3 highlight">
         <ul class="list-unstyled list-inline">
           <li>Bienvenid@ <%= current_user.name %></li>
           <li><%= link_to "Inicio", root_path %></li>
@@ -36,7 +36,7 @@
 </div>
 
 <div clas="row">
-    <div class="col-lg-6 col-lg-offset-3" style="background-color:honeydew;">
+    <div class="col-lg-6 col-lg-offset-3">
     
         <%= yield %>
     

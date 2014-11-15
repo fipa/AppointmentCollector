@@ -1,13 +1,14 @@
-<h1>Listing clients</h1>
+<div class="col-sm-12 highlight">
+<h1>Listando clientes</h1>
 
 <table class="table table-hover table-bordered">
   <thead>
     <tr>
-      <th>Full name</th>
+      <th>Nombre completo</th>
       <th>Email</th>
-      <th>Ammount</th>
+      <th>Monto a cobrar por cita</th>
       <th>Comments</th>
-      <th colspan="4"></th>
+      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -18,7 +19,6 @@
         <td><%= client.email %></td>
         <td><%= client.ammount %></td>
         <td><%= client.comments %></td>
-        <td><%= link_to 'Show', client %></td>
         <td><%= link_to 'Edit', edit_client_path(client) %></td>
         <td><%= link_to 'Ver arriendos', client_dates_path(client) %></td>
         <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -30,3 +30,4 @@
 <br>
 
 <%= link_to 'New Client', new_client_path %>
+</div>
