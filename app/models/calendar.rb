@@ -28,7 +28,9 @@ class Calendar < ActiveRecord::Base
 			:headers => {'Content-Type' => 'application/json'}
 		)
 
-		#TODO manejar respuesta de ivnalid credentials
+		logger.info("respuesta de la API " + results.to_s)
+
+		#TODO manejar respuesta de invalid credentials
 		parsed_results = Array.new
 		results.data.items.each do |item|
 		date = CalendarDate.new
@@ -38,7 +40,7 @@ class Calendar < ActiveRecord::Base
 		parsed_results << date
 
 		end
-		logger.info("resultrados de la API " + parsed_results.to_s)
+		logger.info("resultados de la API " + parsed_results.to_s)
 		return parsed_results
 
 	end
