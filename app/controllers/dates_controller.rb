@@ -12,7 +12,7 @@ class DatesController < ApplicationController
 		@preset_start_date = Date.civil(params[:start_date][:year].to_i, params[:start_date][:month].to_i, params[:start_date][:day].to_i)
 		date_from = Date.new(params[:start_date][:year].to_i, params[:start_date][:month].to_i, 1)
 		date_to = Date.new(params[:start_date][:year].to_i, params[:start_date][:month].to_i, -1) # -1 is for getting the last day of month
-		dates = @client.dates(date_from.strftime("%Y-%m:%d"), date_to.strftime("%Y-%m:%d"))
+		dates = @client.dates(date_from.strftime("%Y-%m-%d"), date_to.strftime("%Y-%m-%d"))
 		@dates = dates[:entries]
 		@total_ammount = dates[:total_ammount]
 	end
