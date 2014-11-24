@@ -1,9 +1,9 @@
 <div id="text_for_collection" onclick="selectText()" class="">
-<p>Hola <%= @client.full_name %>, env&iacute;o el detalle de uso de la consulta para este mes.</p>
+<p>Hola <%= @client.full_name %>, env&iacute;o el detalle tus sesiones de este mes.</p>
 
 <ul>
 <% @dates.each do |date| %>
-	<li><%= date.begining.strftime("%e %b %Y %H:%M")  %></li>
+	<li><%= date.begining.strftime("%e %b %H:%M hrs.") %></li>
 <% end %>
 </ul>
 
