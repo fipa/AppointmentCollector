@@ -1,7 +1,7 @@
 class Calendar < ActiveRecord::Base
 
 	belongs_to :user
-	has_many :clients
+	has_many :clients, -> { order 'last_name' }
 
 	def get_dates_from_client_between_dates(client, date_min, date_max)
 
